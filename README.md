@@ -1,10 +1,10 @@
-### Requirements
+# Requirements
 
 * python3.6
 * postgres
 * ubuntu 18.04
 
-### setup
+# setup
 
 * install postgres:
 
@@ -43,7 +43,7 @@
     from peer to md5 inside the file: [`/etc/postgresql/10/main/pg_hba.conf`]
     https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
 
-### running
+# running
 
 * token generator:  `generate_tokens.py` has the function **generate_tokens** which does the task
 
@@ -69,3 +69,4 @@
 
   - `--file`: default tokens.txt
   - `--database`: not useful now
+
