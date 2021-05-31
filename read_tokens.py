@@ -1,8 +1,7 @@
 #!/usr/bin/python
 
-import redis
+# import redis
 import argparse
-from tqdm import tqdm
 from psycopg2 import sql
 import psycopg2
 import time
@@ -14,17 +13,17 @@ def parse_args():
     parser.add_argument('--database', '--db', choices=['redis', 'postgres'], default="postgres")
     return parser.parse_args()
 
-def read_tokens_redis(file, db):
-    r = redis.Redis(db=db)
-    r.flushall()
+# def read_tokens_redis(file, db):
+#     r = redis.Redis(db=db)
+#     r.flushall()
     
-    with open(file, 'r') as f:
-        for line in tqdm(f):
-            _token = line.strip()
-            r.zincrby("_duplicates", 1, _token)
+#     with open(file, 'r') as f:
+#         for line in tqdm(f):
+#             _token = line.strip()
+#             r.zincrby("_duplicates", 1, _token)
     
-    res = r.zrangebyscore("_duplicates", min="(1", max="+inf", withscores=True)
-    return res
+#     res = r.zrangebyscore("_duplicates", min="(1", max="+inf", withscores=True)
+#     return res
 
 def read_tokens_postgres(file: str, db: str, user: str='postgres') -> List[Tuple[str, int]]:
     """read tokens from `file` and usind `user` and database `db`. 
