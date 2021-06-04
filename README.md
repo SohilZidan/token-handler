@@ -80,10 +80,10 @@
 
   **random.SystemRandom().choices** uses os.urandom() generates operating-system-dependent random bytes that can safely be called cryptographically secure
 
-|                | **PRNGs Algorithm**`random.choices` | **CSPRNGs Algorithm** random.SystemRandom().choices |
-| -------------- | :---------------------------------: | :-------------------------------------------------: |
-| **Sequential** |             ~20 seconds             |                    ~190 seconds                     |
-| **Parallel**   |             ~6 seconds              |                    ~130 seconds                     |
+|                | **PRNGs Algorithm**`random.choices` | **CSPRNGs Algorithm** `random.SystemRandom().choices` |
+| -------------- | :---------------------------------: | :---------------------------------------------------: |
+| **Sequential** |             ~20 seconds             |                     ~190 seconds                      |
+| **Parallel**   |             ~6 seconds              |                     ~130 seconds                      |
 
 * token reader
 
