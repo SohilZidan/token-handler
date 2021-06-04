@@ -41,7 +41,10 @@
   * change the method of postgres !!
 
     from peer to md5 inside the file: [`/etc/postgresql/10/main/pg_hba.conf`]
-    https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
+    
+    `local all postgres trust`
+    
+    ref: https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
 
 # running
 
@@ -57,9 +60,10 @@
   - `--num`: default 10 millions
   - `--file`: default tokens.txt
 
-  * 
+  * `--method`: choices[parallel, sequential]
+  * `--secure`: if present a more cryptographically secure method is used for random generating
 
-* token reader: `read_tokens.py`: has the function read_**tokens_postgres**
+* token reader: `read_tokens.py`: has the function **read_tokens_postgres** (and the database schema)
 
   example:
 
@@ -70,3 +74,17 @@
   - `--file`: default tokens.txt
   - `--database`: not useful now
 
+# Performance
+
+* tokens generator
+
+  **random.SystemRandom().choices** uses os.urandom() generates operating-system-dependent random bytes that can safely be called cryptographically secure
+
+|                | **PRNGs Algorithm**`random.choices` | **CSPRNGs Algorithm** random.SystemRandom().choices |
+| -------------- | :---------------------------------: | :-------------------------------------------------: |
+| **Sequential** |             ~20 seconds             |                    ~190 seconds                     |
+| **Parallel**   |             ~6 seconds              |                    ~130 seconds                     |
+
+* token reader
+
+  ~40 sec (reading and couting duplicates)
