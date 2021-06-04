@@ -16,13 +16,13 @@
 * create python env:
 
   ```bash
-  virtualenv -p python3.6 token-env
+  virtualenv -p python3.6 .token-env
   ```
 
 * activate it:
 
   ```bash
-  . token-env/bin/activate
+  . .token-env/bin/activate
   ```
 
 * install python requirements:
