@@ -1,13 +1,16 @@
 import argparse
 import os
 import time
+import sys
 from typing import List, Tuple
 from psycopg2 import sql
 import psycopg2
 
 
 def parse_args():
-    """"""
+    """
+    argument parser
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('--file', '-f', default="tokens.txt", help="the storage file path")
     parser.add_argument('--database', '--db', choices=['redis', 'postgres'], default="postgres")
@@ -24,7 +27,7 @@ def parse_args():
 #     return res
 
 def read_tokens_postgres(file: str, db: str, user: str='postgres') -> List[Tuple[str, int]]:
-    """read tokens from `file` and usind `user` and database `db`. 
+    """read tokens from `file` and usind `user` and database `db`.
     Store tokens in the db, compute frequencies of duplicate.
 
     Args:
@@ -89,14 +92,15 @@ def read_tokens_postgres(file: str, db: str, user: str='postgres') -> List[Tuple
 if __name__=="__main__":
     args = parse_args()
     file_path = os.path.realpath(args.file)
-    if not os.path.exists(file_path): exit("file does not exist")
+    if not os.path.exists(file_path):
+        sys.exit("file does not exist")
 
     current_time = time.time()
     if args.database == 'postgres':
-        res = read_tokens_postgres(file_path, 'test-db', 'postgres')
+        _res = read_tokens_postgres(file_path, 'test-db', 'postgres')
     else:
-        res = [] #read_tokens_redis(file_path, db=0)
+        _res = [] #read_tokens_redis(file_path, db=0)
 
     end_time = time.time()
     print("elapsed time =", end_time-current_time)
-    print("duplicates:", len(res))
+    print("duplicates:", len(_res))
