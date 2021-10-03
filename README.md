@@ -1,3 +1,4 @@
+[![Pylint](https://github.com/SohilZidan/token-handler/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/SohilZidan/token-handler/actions/workflows/pylint.yml)
 # Requirements
 
 * python3.6
