@@ -1,3 +1,6 @@
+"""
+Generate a text file of tokens of a certain length
+"""
 import multiprocessing
 import random
 import string
@@ -96,9 +99,13 @@ if __name__=="__main__":
 
     current_time = time.time()
     if args.method == "parallel":
-        generate_tokens_mul(file_path=_file_path, num=args.num, token_len=args.token_len, secure=args.secure)
+        generate_tokens_mul(
+            file_path=_file_path, num=args.num,
+            token_len=args.token_len, secure=args.secure)
     else:
-        generate_tokens(file_path=_file_path, num=args.num, token_len=args.token_len, secure=args.secure)
+        generate_tokens(
+            file_path=_file_path, num=args.num,
+            token_len=args.token_len, secure=args.secure)
 
     end_time = time.time()
 

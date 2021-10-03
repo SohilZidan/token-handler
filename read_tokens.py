@@ -1,3 +1,7 @@
+"""
+read a text file of tokens into an SQL database
+"""
+
 import argparse
 import os
 import time
@@ -26,7 +30,7 @@ def parse_args():
 #     res = r.zrangebyscore("_duplicates", min="(1", max="+inf", withscores=True)
 #     return res
 
-def read_tokens_postgres(file: str, db: str, user: str='postgres') -> List[Tuple[str, int]]:
+def read_tokens_postgres(file: str, dbs: str, user: str='postgres') -> List[Tuple[str, int]]:
     """read tokens from `file` and usind `user` and database `db`.
     Store tokens in the db, compute frequencies of duplicate.
 
@@ -40,7 +44,7 @@ def read_tokens_postgres(file: str, db: str, user: str='postgres') -> List[Tuple
     """
 
     # connect
-    conn = psycopg2.connect(f"dbname='{db}' user='{user}'")
+    conn = psycopg2.connect(f"dbname='{dbs}' user='{user}'")
     cur = conn.cursor()
 
 
