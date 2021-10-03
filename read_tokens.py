@@ -11,7 +11,7 @@ from psycopg2 import sql
 import psycopg2
 
 
-def parse_args(): 
+def parse_args():
     """
     argument parser
     """
