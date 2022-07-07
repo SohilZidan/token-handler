@@ -1,0 +1,7 @@
+# exit redis
+
+ pkill redis-server
+
+# exit postgres
+
+ \q
