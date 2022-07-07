@@ -1,10 +1,12 @@
-# Requirements
+# Token Handler
+Read a file containing random tokens and store them in the database as quickly and efficiently as possible without storing any token twice and create a list of all non-unique tokens.
+## Requirements
 
 * python3.6
 * postgres
 * ubuntu 18.04
 
-# setup
+## setup
 
 * install postgres:
 
@@ -46,7 +48,7 @@
     
     ref: https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
 
-# running
+## running
 
 * token generator:  `generate_tokens.py` has the function **generate_tokens** which does the task
 
@@ -74,7 +76,7 @@
   - `--file`: default tokens.txt
   - `--database`: not useful now
 
-# Performance
+## Performance
 
 * tokens generator
 
